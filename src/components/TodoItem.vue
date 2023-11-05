@@ -12,6 +12,10 @@ defineProps<{
 const completed = ref(false)
 
 const remove = inject('remove') as (id: number) => void
+
+function removeTodo(id: number) {
+  remove(id)
+}
 </script>
 
 <template>
@@ -22,7 +26,7 @@ const remove = inject('remove') as (id: number) => void
       {{ todo.content }}
     </span>
 
-    <button @click="remove(todo.id)">Delete</button>
-    <!-- <Button>Delete</Button> -->
+    <!-- <button @click="remove(todo.id)">Delete</button> -->
+    <Button @click="removeTodo(todo.id)">Delete</Button>
   </li>
 </template>
