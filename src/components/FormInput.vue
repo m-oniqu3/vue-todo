@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { generateID } from '@/helpers/generateID'
 import { ref } from 'vue'
-
-// const props = defineProps<{
-//   addTodo(todo: Todo): void
-// }>()
+import Button from './Button.vue'
 
 const emit = defineEmits(['addTodo'])
 
@@ -21,6 +18,8 @@ function onSubmit() {
   }
 
   emit('addTodo', todo)
+
+  content.value = ''
 }
 </script>
 
@@ -31,6 +30,6 @@ function onSubmit() {
       class="py-2 px-4 bg-transparent border border-white/30 w-full"
       placeholder="What to do?"
     />
-    <button class="bg-white/30 py-2 px-4 text-white">Add</button>
+    <Button>Add</Button>
   </form>
 </template>

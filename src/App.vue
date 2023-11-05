@@ -4,6 +4,8 @@ import FormInput from '@/components/FormInput.vue'
 import TodoList from '@/components/TodoList.vue'
 import type { Todo } from '@/types/todo.ts'
 
+import { provide } from 'vue'
+
 import type { Ref } from 'vue'
 import { ref } from 'vue'
 
@@ -11,8 +13,13 @@ const todos = ref([]) as Ref<Todo[]>
 
 function addTodo(todo: Todo) {
   todos.value.push(todo)
-  console.log(todos.value)
 }
+
+function deleteTodo(id: number) {
+  todos.value = todos.value.filter((todo) => todo.id !== id)
+}
+
+provide('remove', (id: number) => deleteTodo(id))
 </script>
 
 <template>
